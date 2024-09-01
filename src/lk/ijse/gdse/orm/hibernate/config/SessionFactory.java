@@ -2,10 +2,6 @@ package lk.ijse.gdse.orm.hibernate.config;
 
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
@@ -21,7 +17,9 @@ public class SessionFactory {
         Properties properties = new Properties();
 
         try {
-            properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("lk/ijse/gdse/orm/hibernate/hibernate.properties"));
+            properties.load(Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResourceAsStream("lk/ijse/gdse/orm/hibernate/hibernate.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
