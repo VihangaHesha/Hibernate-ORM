@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "customer")
+@Entity(name = "customer")
+//@Table(name = "customer")
 public class Customer {
     @Id
     @Column(name = "customer_id")

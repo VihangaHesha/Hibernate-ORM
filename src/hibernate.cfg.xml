@@ -14,7 +14,9 @@
     <property name="hibernate.connection.password">Banda@321</property>
 <!--    By giving the true value we can see a terminal output of our query-->
     <property name="hibernate.show_sql">true</property>
+<!--      hbm2ddl types :- update , create , create-drop , validate -->
     <property name="hibernate.hbm2ddl.auto">update</property>
+<!--      Defining for hibernate that what's the dialect we're using in our project-->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
   </session-factory>
 </hibernate-configuration>
