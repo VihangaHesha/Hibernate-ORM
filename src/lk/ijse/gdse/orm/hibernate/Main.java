@@ -9,9 +9,9 @@ import org.hibernate.dialect.DB2Dialect;
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
-        customer.setId(1);
+        /*customer.setId(1);*/
         customer.setName("Kamal");
-        customer.setAddress("Galle");
+        customer.setAddress("Gall e");
         customer.setSalary(25000.00);
 
 
@@ -53,7 +53,7 @@ public class Main {
 
 //        ============================ Data Retrieve ========================
 
-//        In here we gonna get data from the customer table from the DB
+//        In here we are going to  get data from the customer table from the DB
 
 
        Session getCusSession  = SessionFactoryConfig.getInstance().getSession();
@@ -65,17 +65,17 @@ public class Main {
 
 //        ============================ Data Deletion ========================
 
-//        In here we gonna delete data from the customer table from the DB
+//        In here we are going to  delete data from the customer table from the DB
 
 
-        Session deleteCusSession = SessionFactoryConfig.getInstance().getSession();
+       /* Session deleteCusSession = SessionFactoryConfig.getInstance().getSession();
         Transaction deleteCusTransaction = deleteCusSession.beginTransaction();
 
         deleteCusSession.delete(customer);
 
         deleteCusTransaction.commit();
 
-        deleteCusSession.close();
+        deleteCusSession.close();*/
 
     }
 }

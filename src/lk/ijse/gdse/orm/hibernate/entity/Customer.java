@@ -1,14 +1,15 @@
 package lk.ijse.gdse.orm.hibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity(name = "customer")
 //@Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int id;
     @Column(name = "customer_name")
@@ -17,7 +18,11 @@ public class Customer {
     private String address;
     @Column(name = "customer_salary")
     private double salary;
+    @Column(name = "customer_age",columnDefinition = "TINYINT")
+    private int age;
 
+    @CreationTimestamp
+    private Timestamp timestamp;
     @Override
     public String toString() {
         return "Customer{" +
@@ -25,7 +30,16 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
+                ", age=" + age +
                 '}';
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getId() {
