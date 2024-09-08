@@ -17,6 +17,6 @@
 <!--      hbm2ddl types :- update , create , create-drop , validate -->
     <property name="hibernate.hbm2ddl.auto">create</property>
 <!--      Defining for hibernate that what's the dialect we're using in our project-->
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
   </session-factory>
 </hibernate-configuration>
