@@ -3,6 +3,7 @@ package lk.ijse.gdse.orm.hibernate;
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
 import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
+import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import lk.ijse.gdse.orm.hibernate.entity.Customer_1;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Customer_1 customer = new Customer_1();
+        Customer customer = new Customer();
+        customer.setName("Sunil");
+        customer.setAddress("Galle");
 
         /*
         This is the way 01 of doing this task.But it is much easier to do it in way 02
@@ -27,7 +30,7 @@ public class Main {
 //        customer.setName("Kamal");
 
 //        This is the Way 02
-        customer.setNameIdentifier(new NameIdentifier("Kamal","De","Silva"));
+        /*customer.setNameIdentifier(new NameIdentifier("Kamal","De","Silva"));
         customer.setAddress("Gall e");
         customer.setSalary(25000.00);
 
@@ -45,7 +48,7 @@ public class Main {
         mobileNos.add(homeNumber);
         mobileNos.add(mobileNumber);
 
-        customer.setPhoneNos(mobileNos);
+        customer.setPhoneNos(mobileNos);*/
 
 
 //        We get an instance from the SessionFactory as a Session and refer it to a variable
@@ -69,7 +72,7 @@ public class Main {
 //        In here we update customer details as we inserted in above code!
 
 
-        Session updateCusSession = SessionFactoryConfig.getInstance().getSession();
+      /*  Session updateCusSession = SessionFactoryConfig.getInstance().getSession();
 
         Transaction updateCusTransaction = updateCusSession.beginTransaction();
         customer.setAddress("Baddegama");
@@ -95,7 +98,7 @@ public class Main {
 
         Customer_1 existingCustomer = getCusSession.get(Customer_1.class, 1);
 
-        System.out.println(existingCustomer);
+        System.out.println(existingCustomer);*/
 
 
 //        ============================ Data Deletion ========================
