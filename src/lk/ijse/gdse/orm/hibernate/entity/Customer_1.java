@@ -1,3 +1,4 @@
+/*
 package lk.ijse.gdse.orm.hibernate.entity;
 
 import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
@@ -17,8 +18,10 @@ public class Customer_1 {
     @Column(name = "customer_id")
     private int id;
 
-    /*@Column(name = "customer_name")
-    private String name;*/
+    */
+/*@Column(name = "customer_name")
+    private String name;*//*
+
 
     private NameIdentifier nameIdentifier;
 
@@ -132,3 +135,4 @@ public class Customer_1 {
     public Customer_1() {
     }
 }
+*/

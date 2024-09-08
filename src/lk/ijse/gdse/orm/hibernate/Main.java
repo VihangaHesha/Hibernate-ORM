@@ -4,7 +4,7 @@ import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
 import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
-import lk.ijse.gdse.orm.hibernate.entity.Customer_1;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
