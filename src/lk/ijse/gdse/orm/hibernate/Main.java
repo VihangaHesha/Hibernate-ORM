@@ -1,6 +1,7 @@
 package lk.ijse.gdse.orm.hibernate;
 
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
+import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,8 +10,15 @@ import org.hibernate.dialect.DB2Dialect;
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
+
+        /*NameIdentifier name = new NameIdentifier();
+        name.setFirstName("Kamal");
+        name.setMiddleName("De");
+        name.setLastName("Silva");*/
         /*customer.setId(1);*/
-        customer.setName("Kamal");
+//        customer.setName("Kamal");
+
+        customer.setNameIdentifier(new NameIdentifier("Kamal","De","Silva"));
         customer.setAddress("Gall e");
         customer.setSalary(25000.00);
 
@@ -41,7 +49,9 @@ public class Main {
         Transaction updateCusTransaction = updateCusSession.beginTransaction();
         customer.setAddress("Baddegama");
         customer.setSalary(6000.00);
-        customer.setName("Sunimal");
+//        customer.setName("Sunimal");
+        customer.setNameIdentifier(new NameIdentifier("Kamal","De","Silva"));
+
 
         updateCusSession.update(customer);
 

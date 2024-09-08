@@ -1,5 +1,8 @@
 package lk.ijse.gdse.orm.hibernate.embedded;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class NameIdentifier {
 
     private String firstName;
