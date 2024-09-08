@@ -1,26 +1,52 @@
 package lk.ijse.gdse.orm.hibernate;
 
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
+import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
 import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.dialect.DB2Dialect;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Customer customer = new Customer();
 
-        /*NameIdentifier name = new NameIdentifier();
+        /*
+        This is the way 01 of doing this task.But it is much easier to do it in way 02
+
+        NameIdentifier name = new NameIdentifier();
         name.setFirstName("Kamal");
         name.setMiddleName("De");
-        name.setLastName("Silva");*/
+        name.setLastName("Silva");
+        customer.setNameIdentifier(name);
+        */
         /*customer.setId(1);*/
 //        customer.setName("Kamal");
 
+//        This is the Way 02
         customer.setNameIdentifier(new NameIdentifier("Kamal","De","Silva"));
         customer.setAddress("Gall e");
         customer.setSalary(25000.00);
+
+
+        List<MobileNumber> mobileNos = new ArrayList<>();
+
+        MobileNumber homeNumber = new MobileNumber();
+        homeNumber.setType("Home");
+        homeNumber.setMobileNumber("0919948453");
+
+        MobileNumber mobileNumber = new MobileNumber();
+        mobileNumber.setType("Mobile");
+        mobileNumber.setMobileNumber("0778849453");
+
+        mobileNos.add(homeNumber);
+        mobileNos.add(mobileNumber);
+
+        customer.setPhoneNos(mobileNos);
 
 
 //        We get an instance from the SessionFactory as a Session and refer it to a variable

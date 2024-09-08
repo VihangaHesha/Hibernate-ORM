@@ -1,10 +1,13 @@
 package lk.ijse.gdse.orm.hibernate.entity;
 
+import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
 import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "customer")
 //@Table(name = "customer")
@@ -32,6 +35,12 @@ public class Customer {
     @Column(name = "TransientOBJ")
     private String transientObj;
 
+    @ElementCollection
+    @CollectionTable(name = "customer_mobile_nos",
+                     joinColumns = @JoinColumn(name = "customer_id"))
+
+    private List<MobileNumber> phoneNos = new ArrayList<>();
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -42,6 +51,7 @@ public class Customer {
                 ", age=" + age +
                 ", timestamp=" + timestamp +
                 ", transientObj='" + transientObj + '\'' +
+                ", phoneNos=" + phoneNos +
                 '}';
     }
 
@@ -67,6 +77,14 @@ public class Customer {
 
     public NameIdentifier getNameIdentifier() {
         return nameIdentifier;
+    }
+
+    public List<MobileNumber> getPhoneNos() {
+        return phoneNos;
+    }
+
+    public void setPhoneNos(List<MobileNumber> phoneNos) {
+        this.phoneNos = phoneNos;
     }
 
     public void setNameIdentifier(NameIdentifier nameIdentifier) {
