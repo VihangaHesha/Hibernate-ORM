@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity(name = "customer")
 //@Table(name = "customer")
-public class Customer {
+public class Customer_1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
@@ -119,7 +119,7 @@ public class Customer {
         this.salary = salary;
     }
 
-    public Customer(int id, NameIdentifier nameIdentifier, String address, double salary, int age, Timestamp timestamp, String transientObj) {
+    public Customer_1(int id, NameIdentifier nameIdentifier, String address, double salary, int age, Timestamp timestamp, String transientObj) {
         this.id = id;
         this.nameIdentifier = nameIdentifier;
         this.address = address;
@@ -129,6 +129,6 @@ public class Customer {
         this.transientObj = transientObj;
     }
 
-    public Customer() {
+    public Customer_1() {
     }
 }

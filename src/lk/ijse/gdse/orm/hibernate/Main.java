@@ -3,17 +3,16 @@ package lk.ijse.gdse.orm.hibernate;
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.embedded.MobileNumber;
 import lk.ijse.gdse.orm.hibernate.embedded.NameIdentifier;
-import lk.ijse.gdse.orm.hibernate.entity.Customer;
+import lk.ijse.gdse.orm.hibernate.entity.Customer_1;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.dialect.DB2Dialect;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Customer customer = new Customer();
+        Customer_1 customer = new Customer_1();
 
         /*
         This is the way 01 of doing this task.But it is much easier to do it in way 02
@@ -94,7 +93,7 @@ public class Main {
 
        Session getCusSession  = SessionFactoryConfig.getInstance().getSession();
 
-        Customer existingCustomer = getCusSession.get(Customer.class, 1);
+        Customer_1 existingCustomer = getCusSession.get(Customer_1.class, 1);
 
         System.out.println(existingCustomer);
 
