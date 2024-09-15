@@ -42,13 +42,32 @@ public class SQLQueryEvaluator {
 
         jpqlJoinSession.close();
 
+        //        =======================================================================================
+
+        System.out.println("-------HQL Get All-------");
+        Session hqlGetAllSession =
+                SessionFactoryConfig
+                        .getInstance()
+                        .getSession();
+        hqlGetAllQuery(hqlGetAllSession);
+
+        hqlGetAllSession.close();
+    }
+
+    private static void hqlGetAllQuery(Session hqlGetAllSession) {
+        String sql = "FROM Customer";
+        Query hqlGetAllQurey = hqlGetAllSession.createQuery(sql);
+        List<Customer> customer = hqlGetAllQurey.list();
+        for (Customer customers : customer){
+            System.out.println(customers);
+        }
     }
 
     private static void jpqlJoinQueries(Session jpqlJoinSession) {
         String sql = "SELECT O FROM Order AS O \n" +
                 "INNER JOIN Customer AS C \n" +
-                "ON O.customer.id = C.id\n" +
-                "WHERE C.id = :cus_id";
+                "ON O.customer.id = C.id \n" +
+                " WHERE C.id = :cus_id";
         Query jpqlJoinQuery = jpqlJoinSession.createQuery(sql);
         jpqlJoinQuery.setParameter("cus_id",2);
         List<Order> orders = jpqlJoinQuery.list();
