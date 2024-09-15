@@ -3,6 +3,7 @@ package lk.ijse.gdse.orm.hibernate;
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,8 @@ public class DetachedState {
                         .getInstance()
                         .getSession();
 
+        Transaction detachedTransaction = detachedSession.beginTransaction();
+
         //Now the object is in the Detached State
         //Persistent State -> Detached State
         detachedSession.detach(customer);
@@ -42,9 +45,12 @@ public class DetachedState {
         //Now the object is in the Persistent State again!!
         //Persistent State -> Detached State -> Persistent State
         customer.setAddress("Matara");
-        detachedSession.save(customer);
+        detachedSession.merge(customer);
 
         System.out.println(isExistInSession(detachedSession, customer));
+
+        detachedTransaction.commit();
+        detachedSession.close();
     }
     private static String isExistInSession(Session session, Customer customer){
         return session.contains(customer)
