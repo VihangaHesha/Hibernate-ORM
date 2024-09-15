@@ -4,10 +4,9 @@ import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PersistantState {
+public class DetachedState {
     public static void main(String[] args) {
         Session session =
                 SessionFactoryConfig
@@ -22,15 +21,34 @@ public class PersistantState {
                 new ArrayList<>());
 
         //Now the object is in the Persistent State
-        //Transient State -> Persistent State
         int cusId  = (int) session.save(customer);
         System.out.println("Customer Id :" + cusId);
-        System.out.println(isExistInSession(session, customer));
 
+        System.out.println(isExistInSession(session, customer));
+        session.close();
+
+
+        Session detachedSession =
+                SessionFactoryConfig
+                        .getInstance()
+                        .getSession();
+
+        //Now the object is in the Detached State
+        //Persistent State -> Detached State
+        detachedSession.detach(customer);
+        System.out.println(isExistInSession(detachedSession, customer));
+
+
+        //Now the object is in the Persistent State again!!
+        //Persistent State -> Detached State -> Persistent State
+        customer.setAddress("Matara");
+        detachedSession.save(customer);
+
+        System.out.println(isExistInSession(detachedSession, customer));
     }
     private static String isExistInSession(Session session, Customer customer){
         return session.contains(customer)
                 ? "This object is in the Persistent State"
-                : "This object is still in the Transient";
+                : "This object is in the Detached State";
     }
 }
